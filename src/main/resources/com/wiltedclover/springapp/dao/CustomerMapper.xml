@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN' 'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+
+<mapper namespace='com.wiltedclover.springapp.dao.CustomerMapper'>
+
+	<resultMap type="com.wiltedclover.springapp.model.Customer" id="customerMap">
+		<id property="id" column="ID"/>
+		<result property="name" column="NAME"/>
+		<result property="invdate" column="INVDATE"/>
+		<result property="amount" column="AMOUNT"/>
+		<result property="total" column="TOTAL"/>
+		<result property="tax" column="TAX"/>
+		<result property="closed" column="CLOSED" typeHandler="org.apache.ibatis.type.BooleanTypeHandler"/>
+		<result property="shippedVia" column="SHIPPED_VIA"/>
+	</resultMap>
+
+	<select id="getAllCustomers" resultMap="customerMap">
+		SELECT * FROM customer
+	</select>
+</mapper>

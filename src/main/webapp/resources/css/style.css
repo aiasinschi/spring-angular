@@ -1,0 +1,17 @@
+body {
+	font-family: 'Encode Sans Condensed', sans-serif;
+}
+
+.app-button {
+	min-width: 120px;
+	width: min-content;
+}
+
+.app-label {
+	display: inline;
+	font-weight: bolder;
+}
+
+.app-value {
+	display: inline;
+}

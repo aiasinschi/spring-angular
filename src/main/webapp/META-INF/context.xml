@@ -1,0 +1,10 @@
+<Context>
+	<Resource accessToUnderlyingConnectionAllowed="true" auth="Container"
+			  connectionProperties="defaultRowPrefetch=500" driverClassName="org.postgresql.Driver"
+			  initialSize="2" maxTotal="20" maxIdle="10" maxWaitMillis="10000"
+			  minEvictableIdleTimeMillis="600000" name="jdbc/springapp"
+			  testOnBorrow="true" testWhileIdle="true"
+			  timeBetweenEvictionRunsMillis="300000" type="javax.sql.DataSource"
+			  url="jdbc:postgresql://localhost:5432/webplatform"
+			  username="postgres" password="root"/>
+</Context>
