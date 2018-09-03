@@ -11,7 +11,7 @@ export class ProductService {
   constructor (protected httpClient: HttpClient) {
   }
 
-  getAll(): Observable<Product[]>{
+  public getAll(): Observable<Product[]>{
     return this.httpClient.get<Product[]>(`${this.baseUrl}/products`);
   }
 
@@ -19,5 +19,7 @@ export class ProductService {
     return this.httpClient.post<Product>(`${this.baseUrl}/addProduct`, { product: product });
   }
 
-
+  public removeProduct(id: number) {
+    return this.httpClient.post<string>(`${this.baseUrl}/removeProduct`, {id: id});
+  }
 }

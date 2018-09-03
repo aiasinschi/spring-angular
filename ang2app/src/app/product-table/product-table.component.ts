@@ -13,6 +13,7 @@ export class ProductTableComponent implements OnInit {
   newProduct: Product = {
     code: '', description: '', id: null, price: 0, producer: ''
   };
+  codePrefix: string = 'PROD';
   addDialogVisible: string = 'none';
 
   constructor(protected productService: ProductService) { }
@@ -44,4 +45,9 @@ export class ProductTableComponent implements OnInit {
     this.hideAddProductDialog();
   }
 
+  removeProduct(id: number) {
+    this.productService.removeProduct(id).subscribe(
+      message => { if (message) { alert(message); } this.refreshData(); }
+    );
+  }
 }

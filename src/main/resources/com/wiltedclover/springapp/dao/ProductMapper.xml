@@ -16,9 +16,12 @@
 			select nextval('seq_product')
 		</selectKey>
 		INSERT INTO product(id, code, description, price, producer) VALUES (
-			#{id}, #{code}, #{description}, #{price}, #{producer}
+			#{id}, #{code} || #{id}, #{description}, #{price}, #{producer}
 		)
 	</insert>
+	<delete id="removeProduct">
+		DELETE FROM product WHERE ID=#{id}
+	</delete>
 
 	<select id="getAllProducts" resultMap="productMap">
 		SELECT * FROM product

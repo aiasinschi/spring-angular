@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 /**
  * TODO: Document me
  *
- * @author Adrian Iasinschi (adrian.iasinschi@kepler-rominfo.com)
+ * @author Adrian Iasinschi (aiasinschi@gmail.com)
  */
 @Repository
 public interface ProductMapper {
@@ -16,4 +16,6 @@ public interface ProductMapper {
 	List<Product> getAllProducts();
 
 	void addProduct(Product product);
+
+	void removeProduct(Long id);
 }

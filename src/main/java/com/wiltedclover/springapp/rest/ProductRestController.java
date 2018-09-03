@@ -32,10 +32,24 @@ public class ProductRestController {
 		Product product = productForm.getProduct();
 		try {
 			productMapper.addProduct(product);
+			product.setCode(product.getCode().concat(product.getId().toString()));
 		} catch (Exception ex) {
 			System.out.println(ex.getStackTrace());
 		}
 		return product;
+	}
+
+	@PostMapping("/removeProduct")
+	public String removeProduct(@RequestBody ProductForm productForm) {
+		Long id = productForm.getId();
+		String message = null;
+		try {
+			productMapper.removeProduct(id);
+		} catch (Exception ex) {
+			message = "An error occurred while deleting the record!";
+			System.out.println(ex.getStackTrace());
+		}
+		return message;
 	}
 
 	public ProductMapper getProductMapper() {

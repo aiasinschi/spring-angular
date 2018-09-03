@@ -38,6 +38,7 @@ body, input {
 }
 
 .table-button {
+  display: table-cell;
   width: 25px;
   height: 25px;
   cursor: pointer;
@@ -50,6 +51,7 @@ body, input {
 .table-button:hover {
   opacity: 0.5;
   background: #4FBFBF;
+  border-radius: 50%;
 }
 
 .app-button {
