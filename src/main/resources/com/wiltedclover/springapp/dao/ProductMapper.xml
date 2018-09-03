@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN' 'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+
+<mapper namespace='com.wiltedclover.springapp.dao.ProductMapper'>
+
+	<resultMap type="com.wiltedclover.springapp.model.Product" id="productMap">
+		<id property="id" column="ID"/>
+		<result property="description" column="DESCRIPTION"/>
+		<result property="code" column="CODE"/>
+		<result property="price" column="PRICE"/>
+		<result property="producer" column="PRODUCER"/>
+	</resultMap>
+
+	<insert id="addProduct">
+		<selectKey keyProperty="id" resultType="long" order="BEFORE">
+			select nextval('seq_product')
+		</selectKey>
+		INSERT INTO product(id, code, description, price, producer) VALUES (
+			#{id}, #{code}, #{description}, #{price}, #{producer}
+		)
+	</insert>
+
+	<select id="getAllProducts" resultMap="productMap">
+		SELECT * FROM product
+	</select>
+</mapper>
