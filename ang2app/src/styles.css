@@ -42,10 +42,6 @@ body, input {
   width: 25px;
   height: 25px;
   cursor: pointer;
-  /*
-  border-radius: 3px;
-  border: 1px solid black;
-  */
 }
 
 .table-button:hover {
