@@ -1,0 +1,19 @@
+.product-search-result {
+  border: 1px solid #BBCCBB;
+  background: #DDEEDD;
+  width: 200px;
+}
+
+.product-name {
+  font-weight: bold;
+  color: #55AAFF;
+}
+
+.product-description {
+  font-size: small;
+  color: #4499EE;
+}
+
+.product-producer {
+  color: #33AA99;
+}

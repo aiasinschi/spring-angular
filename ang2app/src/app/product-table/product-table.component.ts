@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ProductService} from "../service/product.service";
-import {Product} from "../model/product";
+import {ProductOld} from "../model/productold";
 
 @Component({
   selector: 'app-product-table',
@@ -9,11 +9,11 @@ import {Product} from "../model/product";
 })
 export class ProductTableComponent implements OnInit {
 
-  products: Product[] = [];
-  newProduct: Product = {
+  products: ProductOld[] = [];
+  newProduct: ProductOld = {
     code: '', description: '', id: null, price: 0, producer: ''
   };
-  codePrefix: string = 'PROD';
+  codePrefix: string = 'PRODD';
   addDialogVisible: string = 'none';
 
   constructor(protected productService: ProductService) { }

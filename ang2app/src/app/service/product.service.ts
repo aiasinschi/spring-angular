@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Product} from "../model/product";
+import {ProductOld} from "../model/productold";
 
 
 @Injectable()
@@ -11,12 +11,12 @@ export class ProductService {
   constructor (protected httpClient: HttpClient) {
   }
 
-  public getAll(): Observable<Product[]>{
-    return this.httpClient.get<Product[]>(`${this.baseUrl}/products`);
+  public getAll(): Observable<ProductOld[]>{
+    return this.httpClient.get<ProductOld[]>(`${this.baseUrl}/products`);
   }
 
-  public addProduct(product: Product): Observable<Product> {
-    return this.httpClient.post<Product>(`${this.baseUrl}/addProduct`, { product: product });
+  public addProduct(product: ProductOld): Observable<ProductOld> {
+    return this.httpClient.post<ProductOld>(`${this.baseUrl}/addProduct`, { product: product });
   }
 
   public removeProduct(id: number) {
