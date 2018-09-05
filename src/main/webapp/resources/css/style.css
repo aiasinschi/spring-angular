@@ -4,7 +4,6 @@ body {
 
 .app-button {
 	min-width: 120px;
-	width: min-content;
 }
 
 .app-label {

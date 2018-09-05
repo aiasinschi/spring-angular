@@ -1,0 +1,28 @@
+.userInfo {
+  float: left;
+  clear: both;
+  display: inline;
+  font-weight: bolder;
+}
+
+.logoutBox {
+  float: right;
+  clear: both;
+  display: inline;
+}
+
+.logout-button {
+  position: absolute;
+  top: 0;
+  right: 10px
+}
+
+.app-content {
+  clear: both;
+  display: block;
+}
+
+.app-content {
+  margin-left: auto;
+  margin-right: auto;
+}

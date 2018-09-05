@@ -10,20 +10,27 @@ import {Producer} from "../model/producer";
 export class SearchResultListComponent implements OnInit {
 
   results: Product[];
+  term: string;
 
   constructor() { }
 
   ngOnInit() {
+    this.results = [];
+    this.term = '';
+  }
+
+  doSearch() {
+    console.log(this.term);
     this.results = [
-    <Product>{
-      id: 1,
-      name: 'Paper A4',
-      description: 'Paper A4 size, 160gr/m2, white',
-      producer: <Producer> {
+      <Product>{
         id: 1,
-        name: 'Office Paper Supplies inc.'
-      }
-    },
+        name: 'Paper A4',
+        description: 'Paper A4 size, 160gr/m2, white',
+        producer: <Producer> {
+          id: 1,
+          name: 'Office Paper Supplies inc.'
+        }
+      },
       <Product>{
         id: 1,
         name: 'Paper clip',

@@ -1,7 +1,22 @@
-<div style="text-align:center">
+<div class="header">
+  <div class="userInfo" *ngIf="isLoggedIn()">Hello, {{loggedUser.name}}</div>
+  <div class="logoutBox" *ngIf="isLoggedIn()">
+    <div class="app-button logout-button" (click)="doLogout()">Logout</div>
+  </div>
+
+  <div class="loginBox" *ngIf="!isLoggedIn()">
+    <label for="usernameInput">Username:</label>
+    <input id="usernameInput" [value]="loggedUser.username" (input)="loggedUser.username = $event.target.value"/>
+    <label for="passwordInput">Password:</label>
+    <input id="passwordInput" type="password" [value]="loggedUser.password" (input)="loggedUser.password = $event.target.value"/>
+    <div class="app-button" (click)="doLogin()">Login</div>
+  </div>
+
+</div>
+<div class="app-content" *ngIf="isLoggedIn()">
   <app-search-result-list></app-search-result-list>
-  <br/>
+  <!--<br/>
   <app-customer-table></app-customer-table>
   <br/>
-  <app-product-table></app-product-table>
+  <app-product-table></app-product-table>-->
 </div>

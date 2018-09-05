@@ -1,3 +1,10 @@
-<div *ngFor="let result of results">
-  <app-product-search-result [product]="result"></app-product-search-result>
+<div>
+  <label for="searchTermInput">Search for:</label>
+  <input id="searchTermInput" [value]="term" (input)="term = $event.target.value"/>
+  <div class="app-button" (click)="doSearch()" [ngStyle]="{'display': 'inline-block', 'width': '100px'}">Search</div>
+</div>
+<div *ngIf="results.length > 0">
+  <div *ngFor="let result of results">
+    <app-product-search-result [product]="result"></app-product-search-result>
+  </div>
 </div>

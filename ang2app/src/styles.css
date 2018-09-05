@@ -57,6 +57,7 @@ body, input {
   width: 150px;
   cursor: pointer;
   clear: both;
+  text-align: center;
 }
 
 .app-button:hover {
