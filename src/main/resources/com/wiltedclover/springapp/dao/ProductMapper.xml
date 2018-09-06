@@ -8,7 +8,6 @@
 		<result property="description" column="DESCRIPTION"/>
 		<result property="code" column="CODE"/>
 		<result property="price" column="PRICE"/>
-		<result property="producer" column="PRODUCER"/>
 	</resultMap>
 
 	<insert id="addProduct">
@@ -16,7 +15,7 @@
 			select nextval('seq_product')
 		</selectKey>
 		INSERT INTO product(id, code, description, price, producer) VALUES (
-			#{id}, #{code} || #{id}, #{description}, #{price}, #{producer}
+			#{id}, #{code} || #{id}, #{description}, #{price}, ''
 		)
 	</insert>
 	<delete id="removeProduct">

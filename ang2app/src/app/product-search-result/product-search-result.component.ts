@@ -19,4 +19,8 @@ export class ProductSearchResultComponent implements OnInit {
   openProducerPage(id: number) {
     console.log(`Opening producer page ${id}...`);
   }
+
+  openCategoryPage(id: number) {
+    console.log(`Opening category page ${id}...`);
+  }
 }

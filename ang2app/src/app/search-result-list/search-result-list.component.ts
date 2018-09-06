@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Product} from "../model/product";
 import {Producer} from "../model/producer";
+import {SearchService} from "../service/search.service";
 
 @Component({
   selector: 'app-search-result-list',
@@ -12,7 +13,7 @@ export class SearchResultListComponent implements OnInit {
   results: Product[];
   term: string;
 
-  constructor() { }
+  constructor(private searchService: SearchService) { }
 
   ngOnInit() {
     this.results = [];
@@ -21,7 +22,10 @@ export class SearchResultListComponent implements OnInit {
 
   doSearch() {
     console.log(this.term);
-    this.results = [
+    this.searchService.getSearchProducts(this.term).subscribe(
+      sp => this.results = sp
+    );
+    /*this.results = [
       <Product>{
         id: 1,
         name: 'Paper A4',
@@ -40,7 +44,7 @@ export class SearchResultListComponent implements OnInit {
           name: 'Bureau Supplies lts.'
         }
       }
-    ];
+    ];*/
   }
 
 }

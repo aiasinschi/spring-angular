@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Ang2app</title>
+	<title>BizzConn</title>
 	<base href="/">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">

@@ -3,12 +3,22 @@
 
 <mapper namespace='com.wiltedclover.springapp.dao.SearchService'>
 
+	<resultMap id="producerMap" type="com.wiltedclover.springapp.model.Producer">
+		<id property="id" column="id"/>
+		<result property="name" column="name"/>
+	</resultMap>
+
+	<resultMap id="categoryMap" type="com.wiltedclover.springapp.model.Category">
+		<id property="id" column="id"/>
+		<result property="name" column="name"/>
+	</resultMap>
+
 	<resultMap type="com.wiltedclover.springapp.model.Product" id="productMap">
 		<id property="id" column="ID"/>
 		<result property="description" column="DESCRIPTION"/>
-		<result property="code" column="CODE"/>
-		<result property="price" column="PRICE"/>
-		<result property="producer" column="PRODUCER"/>
+		<result property="customDescription" column="CUSTOM_DESCRIPTION"/>
+		<association property="producer" resultMap="producerMap" columnPrefix="producer"/>
+		<association property="category" resultMap="categoryMap" columnPrefix="category"/>
 	</resultMap>
 
 	<!--<insert id="addProduct">
@@ -24,6 +34,12 @@
 	</delete>-->
 
 	<select id="getProductsForTerm" resultMap="productMap">
-		SELECT * FROM product
+		select acp.id, ap.description, acp.custom_description, ap.*, ac.username, ac.id as producerId,
+		ac.name || ac.surname as producerName, acat.name as categoryName, acat.id as categoryId
+		from app_client_product acp
+       		inner join app_client ac on acp.client_id = ac.id
+       		inner join app_product ap on acp.product_id = ap.id
+       		inner join app_category acat on ap.category_id = acat.id
+		where UPPER(ap.name) like '%' || UPPER(#{term}) || '%';
 	</select>
 </mapper>

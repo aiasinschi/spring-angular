@@ -9,9 +9,11 @@ public class Product {
 
 	private Long id;
 	private String description;
+	private String customDescription;
 	private String code;
 	private Double price;
-	private String producer;
+	private Producer producer;
+	private Category category;
 
 	public Long getId() {
 		return id;
@@ -27,6 +29,14 @@ public class Product {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public String getCustomDescription() {
+		return customDescription;
+	}
+
+	public void setCustomDescription(String customDescription) {
+		this.customDescription = customDescription;
 	}
 
 	public String getCode() {
@@ -45,11 +55,19 @@ public class Product {
 		this.price = price;
 	}
 
-	public String getProducer() {
+	public Producer getProducer() {
 		return producer;
 	}
 
-	public void setProducer(String producer) {
+	public void setProducer(Producer producer) {
 		this.producer = producer;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 }
