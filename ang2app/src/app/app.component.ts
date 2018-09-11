@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from "./model/user";
+import {UserService} from "./service/user.service";
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,8 @@ export class AppComponent implements OnInit {
   title = 'Business connector';
   loggedUser: User;
   loggedIn: boolean = false;
+
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
     var logged = window.localStorage.getItem('loggedUser');
@@ -31,8 +34,11 @@ export class AppComponent implements OnInit {
   }
 
   doLogin() {
+    this.userService.doLogin(this.loggedUser).subscribe(
+      user => this.loggedUser = user
+    );
     this.loggedIn = true;
-    this.loggedUser.name = 'User Name';
+    //this.loggedUser.name = 'User Name';
     window.localStorage.setItem('loggedUser', JSON.stringify(this.loggedUser));
   }
 

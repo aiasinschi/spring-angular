@@ -11,6 +11,7 @@ import { ProductService } from "./service/product.service";
 import { ProductSearchResultComponent } from './product-search-result/product-search-result.component';
 import { SearchResultListComponent } from './search-result-list/search-result-list.component';
 import {SearchService} from "./service/search.service";
+import {UserService} from "./service/user.service";
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import {SearchService} from "./service/search.service";
     HttpClientModule,
     FormsModule
   ],
-  providers: [CustomerService, ProductService, SearchService],
+  providers: [CustomerService, ProductService, SearchService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
