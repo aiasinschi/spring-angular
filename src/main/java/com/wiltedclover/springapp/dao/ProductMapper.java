@@ -13,9 +13,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ProductMapper {
 
-	List<Product> getAllProducts();
+	List<Product> getAllProductsForProducer(Long producerId);
 
-	void addProduct(Product product);
+	void addClientProduct(Product product);
 
 	void removeProduct(Long id);
 }

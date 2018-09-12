@@ -1,0 +1,5 @@
+<div>
+  <div *ngFor="let menuItem of menuItems">
+    <div (click)="doSelect(menuItem)" class="left-menu-item">{{menuItem.label}}</div>
+  </div>
+</div>

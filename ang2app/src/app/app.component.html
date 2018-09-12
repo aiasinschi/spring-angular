@@ -1,5 +1,5 @@
-<div class="header">
-  <div class="userInfo" *ngIf="isLoggedIn()">Hello, {{loggedUser.name}}</div>
+<div class="app-header">
+  <div class="userInfo" *ngIf="isLoggedIn()">{{loggedUser.name}} {{loggedUser.surname}}</div>
   <div class="logoutBox" *ngIf="isLoggedIn()">
     <div class="app-button logout-button" (click)="doLogout()">Logout</div>
   </div>
@@ -13,8 +13,22 @@
   </div>
 
 </div>
+<div class="app-menu" *ngIf="isLoggedIn()">
+  <app-left-menu [activeMenu]="this.selectedMenu" (notify)="onNotify($event)"></app-left-menu>
+</div>
 <div class="app-content" *ngIf="isLoggedIn()">
-  <app-search-result-list></app-search-result-list>
+  <div *ngIf="this.selectedMenu.code == this.MY_SEARCH">
+    <app-search-result-list></app-search-result-list>
+  </div>
+  <div *ngIf="this.selectedMenu.code == this.MY_PRODUCTS">
+    <app-product-table></app-product-table>
+  </div>
+  <div *ngIf="this.selectedMenu.code == this.MY_CONTACTS">
+    <p>My Contacts section placeholder</p>
+  </div>
+  <div *ngIf="this.selectedMenu.code == this.MY_ACCOUNT">
+    <p>My Account section placeholder</p>
+  </div>
   <!--<br/>
   <app-customer-table></app-customer-table>
   <br/>

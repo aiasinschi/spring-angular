@@ -1,10 +1,26 @@
 <div class="product-search-result">
   <div class="prod-cell product-main">
-    <div class="product-description">{{product.description}}</div>
-    <div class="product-custom-description">{{product.customDescription}}</div>
-    <div class="product-producer" (click)="openProducerPage(product.producer.id)">{{product.producer.name}}</div>
+    <div class="product-description" *ngIf="!isEdited">{{product.description}}</div>
+    <div class="product-description" *ngIf="isEdited">
+      <input value="enter product..."/>
+    </div>
+    <div class="product-custom-description" *ngIf="!isEdited">
+      {{product.customDescription}}
+    </div>
+    <div class="product-custom-description" *ngIf="isEdited">
+      <textarea (value)="product.description" title="Edit description"></textarea>
+    </div>
+    <div class="product-producer" (click)="openProducerPage(product.producer.id)" *ngIf="!isEditable">
+      {{product.producer.name}}
+    </div>
   </div>
   <div class="prod-cell product-category">
-    <div (click)="openCategoryPage(product.category.id)">{{product.category.name}}</div>
+    <div (click)="openCategoryPage(product.category.id)" *ngIf="!isEdited">
+      {{product.category.name}}
+    </div>
+    <div (click)="openCategoryPage(product.category.id)" *ngIf="isEdited">
+      <input value="enter category..."/>
+    </div>
+
   </div>
 </div>

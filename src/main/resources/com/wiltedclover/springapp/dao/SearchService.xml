@@ -33,13 +33,17 @@
 		DELETE FROM product WHERE ID=#{id}
 	</delete>-->
 
-	<select id="getProductsForTerm" resultMap="productMap">
+	<sql id="getProductsFull">
 		select acp.id, ap.description, acp.custom_description, ap.*, ac.username, ac.id as producerId,
-		ac.name || ac.surname as producerName, acat.name as categoryName, acat.id as categoryId
+			   ac.name || ac.surname as producerName, acat.name as categoryName, acat.id as categoryId
 		from app_client_product acp
-       		inner join app_client ac on acp.client_id = ac.id
-       		inner join app_product ap on acp.product_id = ap.id
-       		inner join app_category acat on ap.category_id = acat.id
+				 inner join app_client ac on acp.client_id = ac.id
+				 inner join app_product ap on acp.product_id = ap.id
+				 inner join app_category acat on ap.category_id = acat.id
+	</sql>
+
+	<select id="getProductsForTerm" resultMap="productMap">
+		<include refid="getProductsFull"/>
 		where UPPER(ap.name) like '%' || UPPER(#{term}) || '%';
 	</select>
 </mapper>

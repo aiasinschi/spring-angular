@@ -12,6 +12,7 @@ import { ProductSearchResultComponent } from './product-search-result/product-se
 import { SearchResultListComponent } from './search-result-list/search-result-list.component';
 import {SearchService} from "./service/search.service";
 import {UserService} from "./service/user.service";
+import { LeftMenuComponent } from './left-menu/left-menu.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {UserService} from "./service/user.service";
     CustomerTableComponent,
     ProductTableComponent,
     ProductSearchResultComponent,
-    SearchResultListComponent
+    SearchResultListComponent,
+    LeftMenuComponent
   ],
   imports: [
     BrowserModule,

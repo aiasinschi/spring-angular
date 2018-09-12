@@ -23,16 +23,15 @@ public class ProductRestController {
 	}
 
 	@GetMapping("/products")
-	public List getProducts() {
-		return productMapper.getAllProducts();
+	public List getProducts(@RequestParam("producerId") Long producerId) {
+		return productMapper.getAllProductsForProducer(producerId);
 	}
 
 	@PostMapping("/addProduct")
 	public Product addProduct(@RequestBody ProductForm productForm) {
 		Product product = productForm.getProduct();
 		try {
-			productMapper.addProduct(product);
-			product.setCode(product.getCode().concat(product.getId().toString()));
+			productMapper.addClientProduct(product);
 		} catch (Exception ex) {
 			System.out.println(ex.getStackTrace());
 		}

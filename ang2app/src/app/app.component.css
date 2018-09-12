@@ -19,10 +19,22 @@
 
 .app-content {
   clear: both;
-  display: block;
+  display: inline-block;
+  width: calc(95% - 200px);
 }
 
 .app-content {
   margin-left: auto;
   margin-right: auto;
+}
+
+.app-menu {
+  float: left;
+  display: inline-block;
+  width: 100px;
+}
+
+.app-header {
+  display: block;
+  height: 50px;
 }

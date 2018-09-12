@@ -12,6 +12,7 @@ public class Product {
 	private String customDescription;
 	private String code;
 	private Double price;
+	private Long productId;
 	private Producer producer;
 	private Category category;
 
@@ -69,5 +70,13 @@ public class Product {
 
 	public void setCategory(Category category) {
 		this.category = category;
+	}
+
+	public Long getProductId() {
+		return productId;
+	}
+
+	public void setProductId(Long productId) {
+		this.productId = productId;
 	}
 }

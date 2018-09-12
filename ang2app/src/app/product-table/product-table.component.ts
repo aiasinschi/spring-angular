@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ProductService} from "../service/product.service";
-import {ProductOld} from "../model/productold";
+import {Product} from "../model/product";
+import {Producer} from "../model/producer";
 
 @Component({
   selector: 'app-product-table',
@@ -9,9 +10,9 @@ import {ProductOld} from "../model/productold";
 })
 export class ProductTableComponent implements OnInit {
 
-  products: ProductOld[] = [];
-  newProduct: ProductOld = {
-    code: '', description: '', id: null, price: 0, producer: ''
+  products: Product[] = [];
+  newProduct: Product = {
+    customDescription: '', id: null
   };
   codePrefix: string = 'PRODD';
   addDialogVisible: string = 'none';
@@ -23,7 +24,9 @@ export class ProductTableComponent implements OnInit {
   }
 
   refreshData() {
-    this.productService.getAll().subscribe(
+    var logged = window.localStorage.getItem('loggedUser');
+    var currentUser = JSON.parse(logged);
+    this.productService.getAll(currentUser.id).subscribe(
       c => this.products = c
     )
   }
@@ -41,7 +44,7 @@ export class ProductTableComponent implements OnInit {
     this.productService.addProduct(this.newProduct).subscribe(
       p => this.products.push(p)
     );
-    this.newProduct = { code: '', producer: '', price: 0, id: null, description: '' };
+    this.newProduct = { id: null, description: '' };
     this.hideAddProductDialog();
   }
 

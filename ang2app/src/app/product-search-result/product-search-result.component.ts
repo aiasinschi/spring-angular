@@ -10,6 +10,10 @@ export class ProductSearchResultComponent implements OnInit {
 
   @Input()
   product: Product;
+  @Input()
+  isEditable: boolean;
+  @Input()
+  isEdited: boolean;
 
   constructor() { }
 

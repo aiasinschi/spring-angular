@@ -5,24 +5,26 @@
 
 	<resultMap type="com.wiltedclover.springapp.model.Product" id="productMap">
 		<id property="id" column="ID"/>
+		<result property="customDescription" column="CUSTOM_DESCRIPTION"/>
 		<result property="description" column="DESCRIPTION"/>
-		<result property="code" column="CODE"/>
-		<result property="price" column="PRICE"/>
+		<result property="category.id" column="CATEGORY_ID"/>
+		<result property="category.name" column="CATEGORY_NAME"/>
 	</resultMap>
 
-	<insert id="addProduct">
+	<insert id="addClientProduct">
 		<selectKey keyProperty="id" resultType="long" order="BEFORE">
-			select nextval('seq_product')
+			select nextval('seq_app_product')
 		</selectKey>
-		INSERT INTO product(id, code, description, price, producer) VALUES (
-			#{id}, #{code} || #{id}, #{description}, #{price}, ''
+		INSERT INTO app_client_product(id, client_id, description, product_id) VALUES (
+			#{id}, #{producer.id}, #{description}, #{productId}
 		)
 	</insert>
 	<delete id="removeProduct">
-		DELETE FROM product WHERE ID=#{id}
+		DELETE FROM app_client_product WHERE ID=#{id}
 	</delete>
 
-	<select id="getAllProducts" resultMap="productMap">
-		SELECT * FROM product
+	<select id="getAllProductsForProducer" resultMap="com.wiltedclover.springapp.dao.SearchService.productMap">
+		<include refid="com.wiltedclover.springapp.dao.SearchService.getProductsFull"/>
+		WHERE ac.id = #{producerId}
 	</select>
 </mapper>
